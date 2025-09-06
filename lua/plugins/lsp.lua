@@ -1,4 +1,9 @@
-return {
+return { {
+    "folke/neoconf.nvim",
+    config = function()
+        require("neoconf").setup()
+    end
+}, {
     "neovim/nvim-lspconfig",
     dependencies = {
         "williamboman/mason.nvim",
@@ -11,11 +16,19 @@ return {
         "L3MON4D3/LuaSnip",
         "saadparwaiz1/cmp_luasnip",
         "j-hui/fidget.nvim",
+        "folke/neoconf.nvim",
     },
 
     config = function()
         local cmp = require('cmp')
         local cmp_lsp = require("cmp_nvim_lsp")
+        require('java').setup({
+            jdk = {
+                auto_install = false,
+            },
+        })
+
+
         local capabilities = vim.tbl_deep_extend(
             "force",
             {},
@@ -82,7 +95,21 @@ return {
                     lspconfig.gradle_ls.setup {
                         capabilities = capabilities
                     }
-                end
+                end,
+                ["elixirls"] = function()
+                    local lspconfig = require("lspconfig")
+                    vim.lsp.enable("elixirls")
+                    lspconfig.elixirls.setup {
+                        capabilities = capabilities
+                    }
+                end,
+
+                ["jdtls"] = function()
+                    local lspconfig = require("lspconfig")
+                    lspconfig.jdtls.setup {
+                        capabilities = capabilities
+                    }
+                end,
             }
         })
 
@@ -119,4 +146,4 @@ return {
             },
         })
     end
-}
+} }
