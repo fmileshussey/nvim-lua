@@ -22,13 +22,6 @@ return { {
     config = function()
         local cmp = require('cmp')
         local cmp_lsp = require("cmp_nvim_lsp")
-        require('java').setup({
-            jdk = {
-                auto_install = false,
-            },
-        })
-
-
         local capabilities = vim.tbl_deep_extend(
             "force",
             {},
@@ -39,30 +32,14 @@ return { {
             ensure_installed = {
                 "lua_ls",
                 "ts_ls",
-                "svelte",
-                "zls",
                 "eslint",
+                "jsonls",
             },
             handlers = {
                 function(server_name) -- default handler (optional)
                     require("lspconfig")[server_name].setup {
                         capabilities = capabilities
                     }
-                end,
-                zls = function()
-                    local lspconfig = require("lspconfig")
-                    lspconfig.zls.setup({
-                        root_dir = lspconfig.util.root_pattern(".git", "build.zig", "zls.json"),
-                        settings = {
-                            zls = {
-                                enable_inlay_hints = true,
-                                enable_snippets = true,
-                                warn_style = true,
-                            },
-                        },
-                    })
-                    vim.g.zig_fmt_parse_errors = 0
-                    vim.g.zig_fmt_autosave = 0
                 end,
                 ["lua_ls"] = function()
                     local lspconfig = require("lspconfig")
@@ -87,26 +64,6 @@ return { {
                 ["ts_ls"] = function()
                     local lspconfig = require("lspconfig")
                     lspconfig.ts_ls.setup {
-                        capabilities = capabilities
-                    }
-                end,
-                ["gradle_ls"] = function()
-                    local lspconfig = require("lspconfig")
-                    lspconfig.gradle_ls.setup {
-                        capabilities = capabilities
-                    }
-                end,
-                ["elixirls"] = function()
-                    local lspconfig = require("lspconfig")
-                    vim.lsp.enable("elixirls")
-                    lspconfig.elixirls.setup {
-                        capabilities = capabilities
-                    }
-                end,
-
-                ["jdtls"] = function()
-                    local lspconfig = require("lspconfig")
-                    lspconfig.jdtls.setup {
                         capabilities = capabilities
                     }
                 end,

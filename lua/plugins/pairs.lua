@@ -1,2 +1,2 @@
-return { 'echasnovski/mini.pairs', enabled = true, version = false }
+return { 'echasnovski/mini.pairs', version = false, config = true }
 
