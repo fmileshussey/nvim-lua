@@ -34,8 +34,10 @@ return { {
                 "ts_ls",
                 "eslint",
                 "jsonls",
+                "jdtls",
             },
             handlers = {
+                ["jdtls"] = function() end, -- nvim-jdtls handles setup
                 function(server_name) -- default handler (optional)
                     require("lspconfig")[server_name].setup {
                         capabilities = capabilities
@@ -94,7 +96,7 @@ return { {
         vim.diagnostic.config({
             -- update_in_insert = true,
             float = {
-                focusable = false,
+                focusable = true,
                 style = "minimal",
                 border = "rounded",
                 source = "always",

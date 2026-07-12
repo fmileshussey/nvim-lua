@@ -35,6 +35,7 @@ Mason will auto-install LSPs in the background on first open — watch the botto
 | `<C-e>` | Toggle the quick menu |
 | `<leader>1`–`<leader>4` | Jump to harpooned file 1–4 |
 | `<leader>hp` / `<leader>hn` | Previous / next file in the list |
+| `<leader>hc` | Clear all harpooned files |
 
 ### LSP
 | Key | Action |
@@ -70,6 +71,8 @@ Mason will auto-install LSPs in the background on first open — watch the botto
 | Key | Action |
 |-----|--------|
 | `<leader>gs` | Open Fugitive (git status) |
+| `<leader>gl` | Git commit graph (all branches) |
+| `<leader>gL` | Git commit graph (current file) |
 | `<leader>gb` | Toggle inline current-line git blame |
 | `<leader>gB` | Show full blame for the current line |
 | `<leader>gp` | Preview the hunk under the cursor |
@@ -97,6 +100,7 @@ Mason will auto-install LSPs in the background on first open — watch the botto
 | nvim-lspconfig + mason | Language servers |
 | nvim-cmp + LuaSnip | Completion |
 | vim-fugitive | Git integration |
+| gv.vim | Navigable git commit history graph |
 | gitsigns.nvim | Git change signs in the gutter, hunk nav & inline blame |
 | satellite.nvim | Right-side scrollbar map of git changes, diagnostics & search |
 | undotree | Visual undo history |
